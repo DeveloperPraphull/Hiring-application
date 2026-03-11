@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   SiReact,
   SiJavascript,
@@ -23,6 +23,45 @@ const brands = [
 
 export default function CircularBrandOrbit() {
   const orbitRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({
+    containerSize: 400,
+    radius: 180,
+    iconSize: 50,
+    textSize: "text-2xl"
+  });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      const screenWidth = window.innerWidth;
+      let containerSize, radius, iconSize, textSize;
+
+      if (screenWidth < 640) {
+        // Mobile
+        containerSize = 280;
+        radius = 120;
+        iconSize = 30;
+        textSize = "text-lg";
+      } else if (screenWidth < 1024) {
+        // Tablet
+        containerSize = 320;
+        radius = 140;
+        iconSize = 40;
+        textSize = "text-xl";
+      } else {
+        // Desktop/Laptop
+        containerSize = 400;
+        radius = 180;
+        iconSize = 50;
+        textSize = "text-2xl";
+      }
+
+      setDimensions({ containerSize, radius, iconSize, textSize });
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   useEffect(() => {
     const orbit = orbitRef.current;
@@ -39,16 +78,14 @@ export default function CircularBrandOrbit() {
     animate();
   }, []);
 
-  const radius = 180;
-
   return (
-    <section className="h-screen flex items-center justify-center bg-gray-50">
+    <section className="min-h-screen sm:h-screen flex items-center justify-center bg-gray-50 px-4 py-8 sm:py-0">
 
-      <div className="relative w-[400px] h-[400px]">
+      <div className="relative" style={{ width: dimensions.containerSize, height: dimensions.containerSize }}>
 
         {/* Center Text */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
-          <h2 className="text-2xl font-semibold text-gray-800">
+          <h2 className={`${dimensions.textSize} font-semibold text-gray-800 text-center px-4`}>
             Our Tech Stack
           </h2>
         </div>
@@ -61,20 +98,20 @@ export default function CircularBrandOrbit() {
         >
           {brands.map((Icon, index) => {
             const angle = (index / brands.length) * 2 * Math.PI;
-            const x = radius * Math.cos(angle);
-            const y = radius * Math.sin(angle);
+            const x = dimensions.radius * Math.cos(angle);
+            const y = dimensions.radius * Math.sin(angle);
 
             return (
               <div
                 key={index}
                 className="absolute"
                 style={{
-                  left: `calc(50% + ${x}px - 25px)`,
-                  top: `calc(50% + ${y}px - 25px)`
+                  left: `calc(50% + ${x}px - ${dimensions.iconSize / 2}px)`,
+                  top: `calc(50% + ${y}px - ${dimensions.iconSize / 2}px)`
                 }}
               >
                 <Icon
-                  size={50}
+                  size={dimensions.iconSize}
                   className="text-gray-400 hover:text-black transition duration-500"
                 />
               </div>
