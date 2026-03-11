@@ -8,6 +8,7 @@ import FigmaCEO from "./component/FIgmaCEO";
 import FinanceActions from "./component/FinanceActions";
 import GodModeGamingText from "./component/GodModeGamingText";
 import HiringCard from "./component/HiringCard";
+import HireCEOInfographic from "./component/HirngCeoInfo";
 import LegendaryGameIntro from "./component/LegendaryGameIntro";
 import MillionSection from "./component/MillionSection";
 import MillionUsersSection from "./component/MillionUsersSection";
@@ -165,7 +166,8 @@ const Home = () => {
                 </button>
             </div>
             <Homea />
-            <CEOStructure/>
+            {/* <CEOStructure/> */}
+            <HireCEOInfographic/>
             <FigmaCEO/>
             <LegendaryGameIntro/>
              {/* <PremiumScrollGallery/> */}

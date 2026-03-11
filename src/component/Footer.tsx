@@ -32,9 +32,9 @@ const brandLetters = ["H", "I", "R", "I", "N", "G"]
 // Dot positions for each letter (relative positioning)
 const dotPositions = [
   { hasTopDot: true, hasDiagonalDots: false }, // H
-  { hasTopDot: false, hasDiagonalDots: false }, // I
+  { hasTopDot: true, hasDiagonalDots: false }, // I
   { hasTopDot: true, hasDiagonalDots: false }, // R
-  { hasTopDot: false, hasDiagonalDots: false }, // I
+  { hasTopDot: true, hasDiagonalDots: false }, // I
   { hasTopDot: true, hasDiagonalDots: false }, // N
   { hasTopDot: true, hasDiagonalDots: true }, // G (has two dots)
 ]
@@ -57,7 +57,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: "ease-out",
     },
   },
 }
@@ -83,7 +83,7 @@ const dotVariants = {
     transition: {
       duration: 0.5,
       delay: 0.5 + i * 0.1,
-      ease: "easeOut",
+      ease: "ease-out",
     },
   }),
 }
@@ -93,7 +93,7 @@ const floatAnimation = {
   transition: {
     duration: 3,
     repeat: Infinity,
-    ease: "easeInOut",
+    ease: "ease-in-out",
   },
 }
 
@@ -102,7 +102,7 @@ const pulseAnimation = {
   transition: {
     duration: 2,
     repeat: Infinity,
-    ease: "easeInOut",
+    ease: "ease-in-out",
   },
 }
 
@@ -323,7 +323,7 @@ export function Footer() {
                     transition: {
                       duration: 3.5,
                       repeat: Infinity,
-                      ease: "easeInOut",
+                      ease: "ease-in-out",
                       delay: 0.5,
                     },
                   }}
