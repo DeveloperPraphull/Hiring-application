@@ -8,6 +8,7 @@ import { Header } from "./component/Header";
 // Lazy pages
 const Home = lazy(() => import("./Page"));
 const AboutPage = lazy(() => import("./Pages/AboutPage"));
+const ContactPage = lazy(() => import("./Pages/ContactUs"));
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer/>
     </Suspense>

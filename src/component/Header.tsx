@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Products", href: "#products" },
   { label: "About", href: "/about" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ]
 
 export function Header() {
