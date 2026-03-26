@@ -37,7 +37,7 @@ export default function DepartmentHire() {
         <Xwrapper>
 
             <section
-                className="min-h-screen p-[10%] flex justify-center bg-white bg-center bg-no-repeat">
+                className="min-h-screen px-4 py-8 sm:px-6 sm:py-10 md:px-[6%] md:py-12 lg:p-[10%] flex justify-center bg-white bg-center bg-no-repeat">
                 <div className="w-full max-w-[100%]">
 
                     {/* HEADER */}
@@ -49,18 +49,21 @@ export default function DepartmentHire() {
                         </div>
 
                         <div className="hidden lg:block w-14 h-[2px] bg-gray-400"></div>
-
-                        <h1 className="text-lg sm:text-xl md:text-2xl lg:text-2xl font-bold text-gray-800 text-center">
+                         
+                         <div className="text-center text-gray-700 font-medium text-sm sm:text-base md:text-lg lg:text-xl">             
+                         
+                        <h1 className="text-lg sm:text-xl md:text-lg lg:text-sm font-bold text-gray-800 text-center">
                             WE MANAGE YOUR COMPLETE
                             <span className="text-blue-700 ml-2">BUSINESS</span>
                         </h1>
+                          </div>
 
                     </div>
 
 
                     {/* CEO */}
 
-                    <div className="flex justify-center ml-6 mt-10 mb-16 lg:mt-2 lg:mb-[-1%]">
+                    <div className="flex justify-center ml-0 sm:ml-6 mt-6 mb-10 sm:mt-10 sm:mb-16 lg:mt-2 lg:mb-[-1%]">
                         <div id="ceo">
                             <CEOSection />
                         </div>
@@ -68,7 +71,7 @@ export default function DepartmentHire() {
 
                     {/* DEPARTMENTS */}
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2 md:gap-6 lg:gap-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-7 gap-x-3 gap-y-8 sm:gap-x-4 sm:gap-y-10 md:gap-6 lg:gap-2 mt-6">
 
                         <Department id="tech" color="blue" title="TECH" items={["Software", "App, Web", "AI Support"]} />
                         <Department id="marketing" color="green" title="MARKETING" items={["Digital", "Branding", "Advertising"]} />
@@ -151,7 +154,7 @@ export default function DepartmentHire() {
 
                     {/* SERVICES */}
 
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-2 lg:gap-2 mt-10 lg:mt-4">
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-4 lg:gap-2 mt-8 sm:mt-10 lg:mt-4">
 
                         {/* Company */}
                         <div
@@ -168,7 +171,7 @@ export default function DepartmentHire() {
                         </div>
 
                         {/* Services Grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 lg:gap-2 gap-4 sm:gap-5 md:gap-6 flex-1 w-full">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 lg:gap-2 gap-3 sm:gap-4 md:gap-5 flex-1 w-full">
                             <Service id="finance" icon={Moniters} title="Finance & Accounts" color="from-blue-400 to-green-500" />
                             <Service id="legal" icon={Hammer} title="Legal & Compliance" color="from-green-500 to-orange-400" />
                             <Service id="operations" icon={Settings} title="Operations" color="from-orange-400 to-orange-500" />
@@ -207,8 +210,8 @@ export default function DepartmentHire() {
                     </div>
 
                     {/* RESULT */}
-                    <div className="flex justify-center mt-16">
-                        <div id="result-split" className="bg-gradient-to-r from-[#e9eef4] via-[#f3f6fb] to-[#e9eef4] border border-gray-300  px-6 sm:px-10 md:px-14 py-3 rounded-full shadow-lg text-sm sm:text-base md:text-lg font-semibold text-gray-800 text-center">
+                    <div className="flex justify-center mt-10 sm:mt-16 px-2">
+                        <div id="result-split" className="bg-gradient-to-r from-[#e9eef4] via-[#f3f6fb] to-[#e9eef4] border border-gray-300 px-4 sm:px-6 md:px-10 lg:px-14 py-2.5 sm:py-3 rounded-full shadow-lg text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-gray-800 text-center">
                             <span className="text-gray-800 font-bold ml-2">
                                 RESULT
                             </span>
@@ -307,20 +310,21 @@ function Department({ id, color, title, items }: DepartmentProps) {
                     <div
                         id={id}
                         className={`relative ${headerColors[color]}
-      text-white text-center px-2 py-1 w-[7vw]
-      text-sm sm:text-base md:text-lg
+      text-white text-center px-3 py-1 w-full min-w-[60px]
+      text-[10px] sm:text-xs md:text-sm lg:text-base
       font-bold
       rounded-lg
       shadow-lg
+      whitespace-nowrap
       after:content-['']
       after:absolute
       after:left-1/2
       after:-translate-x-1/2
       after:top-full
 
-      after:border-l-[10px]
-      after:border-r-[10px]
-      after:border-t-[10px]
+      after:border-l-[8px]
+      after:border-r-[8px]
+      after:border-t-[8px]
 
       after:border-l-transparent
       after:border-r-transparent
@@ -337,38 +341,38 @@ function Department({ id, color, title, items }: DepartmentProps) {
                 <div
                     id={id}
                     className={`
-    ${bgColors[color]}   /* 🔥 light background */
+    ${bgColors[color]}
 
     rounded-xl
     shadow-md
     border border-gray-200
-    w-[110%]           /* full width */
+    w-full
     overflow-hidden
-    pt-8 px-4 py-4
+    pt-6 sm:pt-8 px-2 sm:px-4 py-3 sm:py-4
     transition
     hover:shadow-xl
     hover:-translate-y-1
   `}
                 >
-                    <ul className="space-y-3 text-gray-700 font-medium">
+                    <ul className="space-y-2 sm:space-y-3 text-gray-700 font-medium">
 
                         {items.map((item, i) => (
                             <li
                                 key={i}
                                 className="
-        flex items-start gap-2
-        text-xl 
-        min-h-[20px]           /* 🔥 equal height */
+        flex items-start gap-1.5 sm:gap-2
+        text-xs sm:text-sm md:text-base lg:text-lg
+        min-h-[18px]
         leading-snug
         border-b border-dashed
         last:border-none
-        break-words            /* 🔥 allow wrapping */
-        whitespace-normal      /* 🔥 remove nowrap */
+        break-words
+        whitespace-normal
       "
                             >
                                 <div
-                                    className={`mt-2 w-2.5 h-2.5 rounded-full flex-shrink-0 ${bulletColors[color]}`}
-                                ></div>
+                    className={`mt-1.5 sm:mt-2 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full flex-shrink-0 ${bulletColors[color]}`}
+                ></div>
 
                                 <span className="flex-1">
                                     {item}
@@ -464,7 +468,7 @@ function Service({ id, icon, title, color }: ServiceProps) {
                     <p
                         className="
       text-center
-      text-lg font-semibold text-gray-700
+      text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-gray-700
 
       break-words
       whitespace-normal

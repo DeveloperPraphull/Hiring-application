@@ -17,18 +17,18 @@ import {
 import { createRoot } from "react-dom/client";
 
 const icons = [
-  SiReact,
-  SiJavascript,
-  SiTypescript,
-  SiNodedotjs,
-  SiPython,
-  SiRubyonrails,
-  SiDocker,
-  SiMongodb,
-  SiAngular,
-  SiDjango,
-  SiFastapi,
-  SiMysql
+  { Icon: SiReact, color: "#61DAFB" },
+  { Icon: SiJavascript, color: "#F7DF1E" },
+  { Icon: SiTypescript, color: "#3178C6" },
+  { Icon: SiNodedotjs, color: "#339933" },
+  { Icon: SiPython, color: "#3776AB" },
+  { Icon: SiRubyonrails, color: "#CC0000" },
+  { Icon: SiDocker, color: "#2496ED" },
+  { Icon: SiMongodb, color: "#47A248" },
+  { Icon: SiAngular, color: "#DD0031" },
+  { Icon: SiDjango, color: "#092E20" },
+  { Icon: SiFastapi, color: "#009688" },
+  { Icon: SiMysql, color: "#4479A1" },
 ];
 
 const PhysicsTechBalls = () => {
@@ -93,7 +93,7 @@ const PhysicsTechBalls = () => {
 
     const ballElements: HTMLDivElement[] = [];
 
-    icons.forEach((Icon) => {
+    icons.forEach(({ Icon, color }) => {
       const ball = Bodies.circle(
         Math.random() * width,
         Math.random() * -300,
@@ -115,12 +115,13 @@ const PhysicsTechBalls = () => {
       ballEl.style.alignItems = "center";
       ballEl.style.justifyContent = "center";
       ballEl.style.borderRadius = "50%";
-      ballEl.style.background = "white";
+      ballEl.style.background = "#ffffff";
       ballEl.style.boxShadow = "0 10px 25px rgba(0,0,0,0.15)";
       ballEl.style.transition = "transform 0.1s linear";
+      ballEl.style.colorScheme = "light";
 
       const root = createRoot(ballEl);
-      root.render(<Icon size={30} />);
+      root.render(<Icon size={30} color={color} />);
 
       sceneRef.current?.appendChild(ballEl);
       ballElements.push(ballEl);
@@ -148,7 +149,7 @@ const PhysicsTechBalls = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full h-[400px] overflow-hidden relative"
+      className="w-full h-[400px] overflow-hidden relative bg-[#e8cfcf] rounded-2xl"
     >
       <div ref={sceneRef} />
     </div>
