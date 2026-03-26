@@ -8,6 +8,7 @@ import Rightheader from "./modules/dashboards/Dashboard";
 import Dashboard from "./modules/dashboards/Dashboard";
 import ProductsPricing from "./component/ProductsPricing";
 
+
 // Lazy pages
 const Home = lazy(() => import("./Page"));
 const AboutPage = lazy(() => import("./Pages/AboutPage"));
@@ -24,6 +25,7 @@ const AppRouter = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
+
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/socials" element={<SocialsPage />} />
         <Route path="/social-reports" element={<SocialMediaReports />} />
@@ -44,6 +46,7 @@ const AppRouter = () => {
             <Footer/>
           </>
         } />
+
       </Routes>
     </Suspense>
   );
