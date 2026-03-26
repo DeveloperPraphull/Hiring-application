@@ -1,22 +1,26 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
 
-const navLinks = [
-  { label: "About", href: "#" },
-  { label: "Services", href: "#" },
-  { label: "Portfolio", href: "#" },
-  { label: "Careers", href: "#" },
-  { label: "Blog", href: "#" },
-  { label: "Contact", href: "#" },
+type LinkItem = {
+  label: string
+  href: string
+}
+
+const navLinks: LinkItem[] = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Careers", href: "/careers" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ]
 
-const legalLinks = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms of Service", href: "#" },
-  { label: "Cookie Policy", href: "#" },
+const legalLinks: LinkItem[] = [
+  { label: "Privacy Policy", href: "#privacy" },
+  { label: "Terms of Service", href: "#terms" },
+  { label: "Cookie Policy", href: "#cookies" },
 ]
 
 const socialLinks = [
@@ -32,9 +36,9 @@ const brandLetters = ["H", "I", "R", "I", "N", "G"]
 // Dot positions for each letter (relative positioning)
 const dotPositions = [
   { hasTopDot: true, hasDiagonalDots: false }, // H
-  { hasTopDot: false, hasDiagonalDots: false }, // I
+  { hasTopDot: true, hasDiagonalDots: false }, // I
   { hasTopDot: true, hasDiagonalDots: false }, // R
-  { hasTopDot: false, hasDiagonalDots: false }, // I
+  { hasTopDot: true, hasDiagonalDots: false }, // I
   { hasTopDot: true, hasDiagonalDots: false }, // N
   { hasTopDot: true, hasDiagonalDots: true }, // G (has two dots)
 ]
@@ -57,7 +61,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: "ease-out",
     },
   },
 }
@@ -83,7 +87,7 @@ const dotVariants = {
     transition: {
       duration: 0.5,
       delay: 0.5 + i * 0.1,
-      ease: "easeOut",
+      ease: "ease-out",
     },
   }),
 }
@@ -93,7 +97,7 @@ const floatAnimation = {
   transition: {
     duration: 3,
     repeat: Infinity,
-    ease: "easeInOut",
+    ease: "ease-in-out",
   },
 }
 
@@ -102,7 +106,7 @@ const pulseAnimation = {
   transition: {
     duration: 2,
     repeat: Infinity,
-    ease: "easeInOut",
+    ease: "ease-in-out",
   },
 }
 
@@ -214,15 +218,15 @@ export function Footer() {
               >
                 Quick Links
               </motion.h4>
-              <nav className="space-y-2">
+              <nav className="space-y-2" aria-label="Quick links">
                 {navLinks.map((link) => (
                   <motion.div key={link.label} variants={itemVariants}>
-                    <Link
+                    <a
                       href={link.href}
                       className="block text-gray-400 hover:text-[#f73b20] transition-colors duration-300 text-sm"
                     >
                       {link.label}
-                    </Link>
+                    </a>
                   </motion.div>
                 ))}
               </nav>
@@ -276,12 +280,13 @@ export function Footer() {
             <div className="flex flex-wrap justify-center gap-6">
               {legalLinks.map((link) => (
                 <motion.div key={link.label} variants={itemVariants}>
-                  <Link
+                  <a
                     href={link.href}
                     className="text-gray-400 hover:text-[#f73b20] text-sm underline underline-offset-2 hover:no-underline transition-all duration-300"
+                    aria-label={link.label}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
             </div>
@@ -323,7 +328,7 @@ export function Footer() {
                     transition: {
                       duration: 3.5,
                       repeat: Infinity,
-                      ease: "easeInOut",
+                      ease: "ease-in-out",
                       delay: 0.5,
                     },
                   }}

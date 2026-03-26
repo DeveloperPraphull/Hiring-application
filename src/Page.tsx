@@ -1,12 +1,19 @@
 import BrandsCarousel from "./component/BrandsCarousel";
 import CenterScrollShowcase from "./component/CenterScrollShowcase";
 import CEOStructure from "./component/CEOStructure";
+import Character from "./component/Character";
 import CircularBrandOrbit from "./component/CircularBrandOrbit";
+import DepartmentStr from "./component/DepartmentStr";
+import DeparmentHiresx from "./component/DepartmetXwrapper";
+import DeparmentHire from "./component/DepatmentHire";
 import FigmaCEO from "./component/FIgmaCEO";
 import FinanceActions from "./component/FinanceActions";
+import Flow from "./component/Flow";
 import GodModeGamingText from "./component/GodModeGamingText";
 import HiringCard from "./component/HiringCard";
+import HireCEOInfographic from "./component/HirngCeoInfo";
 import LegendaryGameIntro from "./component/LegendaryGameIntro";
+import MarketingUpdate from "./component/MarketingUpdate";
 import MillionSection from "./component/MillionSection";
 import MillionUsersSection from "./component/MillionUsersSection";
 import PhysicsAlphabetDrop from "./component/PhysicsAlphabetDrop";
@@ -16,7 +23,7 @@ import Homea from "./Pagea";
 const Home = () => {
   return (
     <>
-      <div className="relative min-w-screen overflow-hidden text-white w-full">
+      <div className="relative min-w-screen bg-white overflow-hidden text-white w-full">
 
         {/* Background Video */}
         <video
@@ -108,41 +115,35 @@ const Home = () => {
 
         </section>
 
-        {/* Support Button */}
-        <button className="
-        fixed
-        bottom-6
-        right-6
-        bg-white/20
-        backdrop-blur-md
-        px-4 md:px-6
-        py-2 md:py-3
-        text-sm md:text-base
-        rounded-full
-        z-10
-        ">
-          Support
-        </button>
-
-      </div>
-
-      {/* Other Sections */}
-      <Homea />
-      <CEOStructure />
-      <FigmaCEO />
-      {/* <LegendaryGameIntro /> */}
-      <HiringCard />
-      {/* <GodModeGamingText /> */}
-      <FinanceActions />
-      <MillionUsersSection />
-      {/* <CenterScrollShowcase /> */}
-      {/* <PhysicsAlphabetDrop /> */}
-      <PhysicsTechBalls />
-      <MillionSection />
-      <BrandsCarousel />
-      <CircularBrandOrbit /> 
-    </>
-  );
+                {/* Support Button */}
+                <button className="absolute bottom-8 right-8 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full z-10">
+                    Support
+                </button>
+            </div>
+            <Homea />
+            {/* <Flow/> */}
+            <DeparmentHiresx/>
+            {/* <MarketingUpdate/> */}
+            {/* <DeparmentHire/> */}
+            {/* <CEOStructure/> */}
+            <FigmaCEO/>
+            <LegendaryGameIntro/>
+             {/* <PremiumScrollGallery/> */}
+           <HiringCard/>
+           <GodModeGamingText/>
+           <FinanceActions/>
+           <MillionUsersSection/>
+           <CenterScrollShowcase/>
+           <PhysicsAlphabetDrop/>
+           {/* <ScrollImageQueue/> */}
+           {/* <FloatingBalls/> */}
+           <PhysicsTechBalls/>
+           {/* <UltraPremiumShowcase/> */}
+            <MillionSection/>
+           <BrandsCarousel/>
+           <CircularBrandOrbit/>
+        </>
+    );
 };
 
 export default Home;
