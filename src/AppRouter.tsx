@@ -1,10 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import HiringCard from "./component/HiringCard";
-import FloatingTechBalls from "./component/FloatingBalls";
 import { Footer } from "./component/Footer";
 import { Header } from "./component/Header";
-import Rightheader from "./modules/dashboards/Dashboard";
 import Dashboard from "./modules/dashboards/Dashboard";
 import ProductsPricing from "./component/ProductsPricing";
 

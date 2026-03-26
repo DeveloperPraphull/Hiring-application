@@ -2,6 +2,15 @@ import Xarrow from "react-xarrows";
 import { Settings, FileText, DollarSign } from "lucide-react";
 import CEOSection from "./CEOSection";
 
+type DepartmentColor = "blue" | "green" | "red" | "yellow" | "purple" | "cyan";
+
+interface DepartmentProps {
+  id: string;
+  color?: DepartmentColor;
+  title: string;
+  items: string[];
+}
+
 export default function OrgStructure() {
 
   return (
@@ -147,9 +156,9 @@ export default function OrgStructure() {
 }
 
 
-function Department({ id, color, title, items }) {
+function Department({ id, color = "blue", title, items }: DepartmentProps) {
 
-  const colors = {
+  const colors: Record<DepartmentColor, string> = {
     blue:"bg-blue-600",
     green:"bg-green-600",
     red:"bg-red-500",
@@ -158,6 +167,8 @@ function Department({ id, color, title, items }) {
     cyan:"bg-cyan-600"
   };
 
+  const safeColor = colors[color] ?? colors.blue;
+
   return(
 
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden min-w-[180px]">
@@ -165,7 +176,7 @@ function Department({ id, color, title, items }) {
       {/* HEADER */}
       <div
         id={id}
-        className={`${colors[color]} text-white text-center py-3 font-semibold text-sm`}
+        className={`${safeColor} text-white text-center py-3 font-semibold text-sm`}
       >
         {title}
       </div>
@@ -176,7 +187,7 @@ function Department({ id, color, title, items }) {
         {items.map((item,i)=>(
           <li key={i} className="flex items-center gap-2">
 
-            <div className={`w-2 h-2 rounded-full ${colors[color]}`} />
+            <div className={`w-2 h-2 rounded-full ${safeColor}`} />
 
             {item}
 

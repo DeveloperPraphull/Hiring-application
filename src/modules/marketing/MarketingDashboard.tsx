@@ -1,15 +1,13 @@
 import { useState } from "react";
 import {
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, PieChart, Pie, Cell, Legend,
+  ResponsiveContainer, PieChart, Pie, Cell,
 } from "recharts";
 import {
-  ChevronDown, Download, Search, Heart, FileText,
+  ChevronDown, Search, Heart, FileText,
   Mail, TrendingUp, Globe, ClipboardList,
 } from "lucide-react";
-import {
-  FaInstagram, FaFacebookF, FaYoutube, FaTwitter,
-} from "react-icons/fa";
+
 
 /* ═══════════════════════════════════════════
    DATA

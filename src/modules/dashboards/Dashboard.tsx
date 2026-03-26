@@ -11,7 +11,6 @@ import { SalesLeadsCard } from "./SalesLeadsCard";
 import { AuditsCard } from "./components/AuditsCard";
 import { ExpensesCard } from "./components/ExpensesCard";
 import { RevenueCard } from "./components/RevenueCard";
-import TopTabs from "./components/TopTab";
 import { useDashboardData } from "./components/useDashboardData";
 
 const Dashboard = () => {

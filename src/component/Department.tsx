@@ -9,10 +9,24 @@ import {
     Headphones,
     Lightbulb,
     BarChart3,
-    FileText,
-    DollarSign
 } from "lucide-react";
 import CEOSection from "./CEOSection";
+
+type DepartmentColor = "blue" | "green" | "red" | "yellow" | "purple" | "cyan";
+
+interface DepartmentProps {
+    id: string;
+    color?: DepartmentColor;
+    title: string;
+    items: string[];
+}
+
+interface ServiceProps {
+    id: string;
+    icon: React.ReactNode;
+    title: string;
+    color: string;
+}
 
 export default function DepartmentHire() {
 
@@ -348,9 +362,9 @@ export default function DepartmentHire() {
     );
 }
 
-function Department({ id, color, title, items }) {
+function Department({ id, color = "blue", title, items }: DepartmentProps) {
 
-    const headerColors = {
+    const headerColors: Record<DepartmentColor, string> = {
         blue: "bg-gradient-to-r from-blue-500 to-blue-700",
         green: "bg-gradient-to-r from-green-500 to-green-700",
         red: "bg-gradient-to-r from-red-500 to-red-700",
@@ -359,7 +373,7 @@ function Department({ id, color, title, items }) {
         cyan: "bg-gradient-to-r from-cyan-500 to-cyan-700"
     };
 
-    const bulletColors = {
+    const bulletColors: Record<DepartmentColor, string> = {
         blue: "bg-blue-500",
         green: "bg-green-500",
         red: "bg-red-500",
@@ -368,7 +382,7 @@ function Department({ id, color, title, items }) {
         cyan: "bg-cyan-500"
     };
 
-    const triangleColors = {
+    const triangleColors: Record<DepartmentColor, string> = {
         blue: "border-t-blue-700",
         green: "border-t-green-700",
         red: "border-t-red-700",
@@ -451,7 +465,7 @@ function Department({ id, color, title, items }) {
 }
 
 
-function Service({ id, icon, title, color }) {
+function Service({ id, icon, title, color }: ServiceProps) {
 
     return (
 
@@ -476,17 +490,4 @@ function Service({ id, icon, title, color }) {
         </div>
 
     );
-}
-
-function triangleColor(color) {
-    const map = {
-        blue: "border-t-blue-600",
-        green: "border-t-green-600",
-        red: "border-t-red-500",
-        yellow: "border-t-yellow-500",
-        purple: "border-t-purple-600",
-        cyan: "border-t-cyan-600"
-    };
-
-    return map[color];
 }

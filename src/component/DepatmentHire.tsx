@@ -9,12 +9,24 @@ import {
     Headphones,
     Lightbulb,
     BarChart3,
-    FileText,
-    DollarSign
 } from "lucide-react";
 
-import CEOSection from "./CEOSection";
-import Xarrow, { Xwrapper } from "react-xarrows";
+type DepartmentColor = "blue" | "green" | "red" | "yellow" | "purple" | "cyan";
+
+interface DepartmentProps {
+    id: string;
+    color?: DepartmentColor;
+    title: string;
+    items: string[];
+}
+
+interface ServiceProps {
+    icon: React.ReactNode;
+    title: string;
+    color: string;
+}
+
+import { Xwrapper } from "react-xarrows";
 
 export default function DeparmentHire() {
     return (
@@ -350,6 +362,15 @@ export default function DeparmentHire() {
 
                 </div>
 
+                <div className="mt-8">
+                    <Department
+                        id="dept-sample"
+                        title="Additional Dept"
+                        items={["Research", "Development", "Quality"]}
+                        color="cyan"
+                    />
+                </div>
+
             </div>
         </div>
     );
@@ -359,9 +380,9 @@ export default function DeparmentHire() {
 
 
 
-function Department({ id, color, title, items }) {
+export function Department({ id, color = "blue", title, items }: DepartmentProps) {
 
-    const colors = {
+    const colors: Record<DepartmentColor, string> = {
         blue: "bg-blue-600",
         green: "bg-green-600",
         red: "bg-red-500",
@@ -369,6 +390,8 @@ function Department({ id, color, title, items }) {
         purple: "bg-purple-600",
         cyan: "bg-cyan-600"
     };
+
+    const safeColor = colors[color] ?? colors.blue;
 
     return (
         <Xwrapper>
@@ -379,7 +402,7 @@ function Department({ id, color, title, items }) {
                 {/* HEADER */}
                 <div
                     id={id}
-                    className={`${colors[color]} text-white text-center py-3 font-semibold text-sm`}
+                    className={`${safeColor} text-white text-center py-3 font-semibold text-sm`}
                 >
                     {title}
                 </div>
@@ -390,7 +413,7 @@ function Department({ id, color, title, items }) {
                     {items.map((item, i) => (
                         <li key={i} className="flex items-center gap-2">
 
-                            <div className={`w-2 h-2 rounded-full ${colors[color]}`} />
+                            <div className={`w-2 h-2 rounded-full ${safeColor}`} />
 
                             {item}
 
@@ -407,7 +430,7 @@ function Department({ id, color, title, items }) {
 }
 /* Service Component */
 
-function Service({ icon, title, color }) {
+function Service({ icon, title, color }: ServiceProps) {
     return (
         <div className="relative text-center">
 

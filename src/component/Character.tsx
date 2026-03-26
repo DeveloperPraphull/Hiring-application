@@ -1,37 +1,29 @@
-import React, { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 function Character() {
-  const { scene } = useGLTF("/character.glb"); // your 3D model
-  const headRef = useRef();
+  const { scene } = useGLTF("/character.glb") as { scene: THREE.Object3D };
+  const headRef = useRef<THREE.Object3D | null>(null);
+
+  useEffect(() => {
+    scene.traverse((obj) => {
+      if (obj.name.toLowerCase().includes("head")) {
+        headRef.current = obj;
+      }
+    });
+  }, [scene]);
 
   useFrame(({ mouse }) => {
-    if (!headRef.current) return;
+    const head = headRef.current;
+    if (!head) return;
 
-    // Convert cursor position to head rotation
     const targetX = mouse.y * 0.5;
     const targetY = mouse.x * 0.7;
 
-    headRef.current.rotation.x = THREE.MathUtils.lerp(
-      headRef.current.rotation.x,
-      targetX,
-      0.1
-    );
-
-    headRef.current.rotation.y = THREE.MathUtils.lerp(
-      headRef.current.rotation.y,
-      targetY,
-      0.1
-    );
-  });
-
-  // attach ref to head bone
-  scene.traverse((obj) => {
-    if (obj.name.toLowerCase().includes("head")) {
-      headRef.current = obj;
-    }
+    head.rotation.x = THREE.MathUtils.lerp(head.rotation.x, targetX, 0.1);
+    head.rotation.y = THREE.MathUtils.lerp(head.rotation.y, targetY, 0.1);
   });
 
   return <primitive object={scene} scale={2} />;
