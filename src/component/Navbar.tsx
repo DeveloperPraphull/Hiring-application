@@ -12,7 +12,14 @@ import {
   FaPhone
 } from "react-icons/fa";
 
-function NavItem({ name, icon }) {
+type NavItemProps = {
+  name: string;
+  icon: React.ReactNode;
+};
+
+type NavbarSection = "personal" | "business" | "company" | null;
+
+function NavItem({ name, icon }: NavItemProps) {
   return (
     <li className="flex items-center justify-between px-2 py-1 cursor-pointer
     rounded-lg group hover:bg-white/20 transition">
@@ -30,7 +37,7 @@ function NavItem({ name, icon }) {
 }
 
 function Navbar() {
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState<NavbarSection>(null);
 
   return (
     <div>

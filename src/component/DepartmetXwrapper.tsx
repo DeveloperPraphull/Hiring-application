@@ -11,7 +11,6 @@ import companyLogo from "../assets/CompanyBuildingico.png";
 import growChart from "../assets/GrothChart.png";
 import Bulb_idea from "../assets/Buld_idea.png";
 import CEOSection from "./CEOSection";
-import bgImage from "../assets/ChatGPT Image Mar 20, 2026, 02_10_24 PM.png";
 
 /* ---------- SCREEN DETECTOR ---------- */
 
@@ -278,8 +277,8 @@ function Department({ id, color, title, items }: DepartmentProps) {
         cyan: "bg-cyan-500"
     };
 
-    const getTailColor = (color: string) => {
-        const map: any = {
+    const getTailColor = (color: DepartmentProps['color']) => {
+        const map: Record<DepartmentProps['color'], string> = {
             blue: "after:border-t-blue-500",
             green: "after:border-t-green-500",
             red: "after:border-t-red-500",

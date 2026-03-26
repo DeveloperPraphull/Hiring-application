@@ -1,4 +1,3 @@
-"use client"
 
 import { motion } from "framer-motion"
 import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
@@ -6,6 +5,12 @@ import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
 type LinkItem = {
   label: string
   href: string
+}
+
+type SocialLink = {
+  icon: React.ComponentType<{ size?: number }>
+  href: string
+  label: string
 }
 
 const navLinks: LinkItem[] = [
@@ -23,7 +28,7 @@ const legalLinks: LinkItem[] = [
   { label: "Cookie Policy", href: "#cookies" },
 ]
 
-const socialLinks = [
+const socialLinks: SocialLink[] = [
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Instagram, href: "#", label: "Instagram" },
@@ -61,7 +66,6 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "ease-out",
     },
   },
 }
@@ -74,7 +78,6 @@ const letterVariants = {
     transition: {
       duration: 0.8,
       delay: i * 0.1,
-      ease: [0.25, 0.46, 0.45, 0.94],
     },
   }),
 }
@@ -87,7 +90,6 @@ const dotVariants = {
     transition: {
       duration: 0.5,
       delay: 0.5 + i * 0.1,
-      ease: "ease-out",
     },
   }),
 }
@@ -97,16 +99,6 @@ const floatAnimation = {
   transition: {
     duration: 3,
     repeat: Infinity,
-    ease: "ease-in-out",
-  },
-}
-
-const pulseAnimation = {
-  scale: [1, 1.1, 1],
-  transition: {
-    duration: 2,
-    repeat: Infinity,
-    ease: "ease-in-out",
   },
 }
 
@@ -190,7 +182,7 @@ export function Footer() {
                 variants={containerVariants}
                 className="flex space-x-4"
               >
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social) => (
                   <motion.a
                     key={social.label}
                     variants={itemVariants}
@@ -328,7 +320,7 @@ export function Footer() {
                     transition: {
                       duration: 3.5,
                       repeat: Infinity,
-                      ease: "ease-in-out",
+                      ease: "easeInOut",
                       delay: 0.5,
                     },
                   }}

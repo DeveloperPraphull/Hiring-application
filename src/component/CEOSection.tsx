@@ -1,14 +1,4 @@
-import { Settings, FileText, DollarSign } from "lucide-react";
 import CEOAVATAR from "../assets/ChatGPT Image Mar 13, 2026, 01_14_34 PM.png";
-
-interface IconWrapperProps {
-    children: React.ReactNode;
-    className?: string;
-}
-
-const IconWrapper = ({ children, className }: IconWrapperProps) => (
-    <div className={`absolute ${className}`}>{children}</div>
-);
 
 export default function CEOSection() {
     return (

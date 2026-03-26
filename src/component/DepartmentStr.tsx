@@ -1,8 +1,14 @@
-import React from 'react'
+type DepartmentColor = 'blue' | 'green' | 'red' | 'yellow' | 'purple' | 'cyan';
 
-function DepartmentStr({ title, items, color }) {
+interface DepartmentStrProps {
+  title: string;
+  items: string[];
+  color?: DepartmentColor;
+}
 
-  const colors = {
+function DepartmentStr({ title, items, color = 'blue' }: DepartmentStrProps) {
+
+  const colors: Record<DepartmentColor, { bg: string; dot: string }> = {
     blue: {
       bg: "bg-blue-600",
       dot: "bg-blue-600"

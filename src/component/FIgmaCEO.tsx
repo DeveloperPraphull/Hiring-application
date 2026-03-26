@@ -8,7 +8,6 @@ import {
   FaUsers,
   FaClipboardCheck,
   FaHeadset,
-  FaUniversity,
   FaCog,
   FaLightbulb,
   FaPhoneAlt,
